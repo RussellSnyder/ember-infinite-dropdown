@@ -7,4 +7,10 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
+  this.route('nav-menu')
+  this.route('nested-routes', function() {
+    this.route('first', { path: '/:first' }, function() {
+      this.route('second', { path: '/:second' });
+    });
+  });
 });

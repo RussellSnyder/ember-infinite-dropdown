@@ -1,0 +1,25 @@
+<DropdownList as |List|>
+  <ul class="list-reset flex">
+    <List.item as |Item|>
+      <li class="w-64 p-4 {{if Item.isActive 'bg-yellow'}}">
+        Yolo
+      </li>
+    </List.item>
+    <List.item as |Item|>
+      <li class="w-64 p-4 {{if Item.isActive 'bg-yellow'}}">
+        Yolo 2
+      </li>
+    </List.item>
+    <List.item as |Item|>
+      <li class="w-64 p-4 {{if Item.isActive 'bg-yellow'}}">
+        Yolo 3
+      </li>
+    </List.item>
+    <List.item as |Item|>
+      <li class="w-64 p-4 {{if Item.isActive 'bg-yellow'}}">
+        Yolo 4
+      </li>
+    </List.item>
+  </ul>
+</DropdownList>
+{{outlet}}

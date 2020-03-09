@@ -3,15 +3,14 @@ import { task, timeout } from 'ember-concurrency';
 import { isEmpty } from '@ember/utils';
 
 export default Component.extend({
-  tagName: "ul",
+  tagName: "",
 
-  updateActiveItems: task(function*(items) {
+  updateActiveItems: task(function*(items, duration = 200) {
     if (isEmpty(items)) {
-      yield timeout(1000);
+      yield timeout(duration);
     }
 
     this.set('activeItems', items)
-    console.log(this.activeItems.map(item => item.elementId));
   }).restartable(),
 
   init() {
@@ -24,16 +23,16 @@ export default Component.extend({
     this.updateActiveItems.perform(items)
   },
 
-  clearActiveItems() {
-    this.updateActiveItems.perform([])
+  clearActiveItems(duration) {
+    this.updateActiveItems.perform([], duration)
   },
 
   actions: {
     setActiveItems(...items) {
       this.setActiveItems(...items)
     },
-    clearActiveItems() {
-      this.clearActiveItems();
+    clearActiveItems(duration) {
+      this.clearActiveItems(duration);
     }
   }
 });
